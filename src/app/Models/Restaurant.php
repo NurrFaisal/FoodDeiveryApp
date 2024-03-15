@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Restaurant extends Model
 {
     use HasFactory;
+
+    /**
+     * @var array
+     */
+
+    protected $fillable = [
+        'name',
+        'lat',
+        'long'
+    ];
 }
