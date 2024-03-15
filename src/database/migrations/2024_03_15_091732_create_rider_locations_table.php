@@ -11,10 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rider_locations', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('rider_locations')) {
+            Schema::create('rider_locations', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('rider_id');
+                $table->string('lat');
+                $table->string('long');
+                $table->datetime('capture_time');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
